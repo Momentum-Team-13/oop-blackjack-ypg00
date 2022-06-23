@@ -18,11 +18,11 @@ class Deck():
     def create_deck(self):
         RANKS_VALUES = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'Jack': 10, 'Queen': 10, 'King': 10, 'Ace': [1, 11]}
         SUITS = ['♣️', '♦️', '♥️', '♠️']
-        VALUES = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, [1, 11]]
-        
+
+        # Loop to creat the deck        
         for suit in SUITS:
             for rank in RANKS_VALUES:
-                card = Card(rank, suit, rank[rank])
+                card = Card(rank, suit, rank.value())
                 self.cards.append(card)
         
     def suffle():
@@ -47,8 +47,8 @@ class Player():
 def play_game():
     deck = Deck()
     deck.create_deck()
-    # for card in deck.cards:
-    #     print(card)
+    for card in deck.cards:
+        print(card)
 
 if __name__ == "__main__":
     play_game()
