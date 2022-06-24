@@ -30,29 +30,40 @@ class Deck():
     def shuffle_deck(self):
         return random.shuffle(self.cards) 
 
-    def deal():
-        pass
-    def draw():
-        pass
 
 class Player():
     def __init__(self, name, type):
         self.name = name
         self.type = type
         self.hand = []
-        
-    def hit():
-        pass
+    
+    def __str__(self):
+        return f'{self.name}'
 
     def check_hand_value():
         pass
+
+    def deal_cards(self, players):
+        pass
+
+    def hit(self, deck):
+        self.hand = deck.cards.pop(0)
 
 def play_game():
     # Create a deck
     deck = Deck()
     
-    for card in deck.cards:
-        print(card)
+    # Create players
+    players = []
+    dealer = Player('Dealer', 'dealer')
+    player_user = Player(input('Enter player name: '), 'player')
+    players.extend([dealer, player_user])
+    print(f'Player 1, {player_user}, will be playing against the {dealer}.')
+    print(f'Let\'s play Blackjack, {player_user}!')
+    player_user.hit(deck)
+    print(f'{player_user}\'s hand: {player_user.hand}')
+
+
     
 if __name__ == "__main__":
     play_game()
