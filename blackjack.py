@@ -1,11 +1,10 @@
 import random
-import copy
 
 class Card():
-    def __init__(self, rank, suit):
+    def __init__(self, rank, suit, value):
         self.rank = rank
         self.suit = suit
-        self.value = None
+        self.value = value
     
     def __str__(self):
         return f'{self.rank} {self.suit} (+{self.value})'
@@ -14,7 +13,7 @@ class Deck():
     def __init__(self):
         self.cards = []
         self.create_deck()
-        self.shuffle()
+        self.shuffle_deck()
         
     def __str__(self):
         return f'{self.cards}'
@@ -24,11 +23,11 @@ class Deck():
         SUITS = ['♣️', '♦️', '♥️', '♠️']
 
         for suit in SUITS:
-            for card in RANKS_VALUES:
-                card = Card(card, suit)
+            for key, value in RANKS_VALUES.items():
+                card = Card(key, suit, value)
                 self.cards.append(card)
         
-    def shuffle(self):
+    def shuffle_deck(self):
         return random.shuffle(self.cards) 
 
     def deal():
@@ -51,17 +50,9 @@ class Player():
 def play_game():
     # Create a deck
     deck = Deck()
-    deck.create_deck()
-    # for card in deck.cards:
-    #     print(card)
-
-    # Suffle the deck
-    deck_shuffled = copy.deepcopy(deck)
-    deck_shuffled.shuffle()
     
-    for card in deck_shuffled.cards:
+    for card in deck.cards:
         print(card)
-
-
+    
 if __name__ == "__main__":
     play_game()
